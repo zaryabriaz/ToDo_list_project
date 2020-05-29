@@ -1,0 +1,43 @@
+<%= form_with(model: @todo,local: true) do |form| %>
+  <% if @todo.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@todo.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @todo.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div style="background-color: lightgray">
+  <div class="form-group row">
+    <%=form.label :Task, class:'col-sm-2 col-form-label'%>
+    <div class="col-sm-10">
+      <%= form.text_field :task %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+  <%=form.label :Status, class:'col-sm-2 col-form-label' %>
+    <div class="col-sm-10">
+    <%= form.select(:status,options_for_select([['assigned','assigned'],['notassigned','notassigned'],['complete','complete'],['incomplete','incomplete'],['inprogress','inprogress']])) %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+  <%=form.label :DueDate ,class:'col-sm-2 col-form-label'%>
+    <div class="col-sm-10">
+    <%= form.date_field :due_date %>
+  </div>
+  </div>
+</div>
+  <div class="border">
+    <p><%= form.submit 'Save',class: 'btn btn-primary btn-block float-right' %></p><br>
+    <p><%= link_to 'Back',to_dos_path ,class: 'btn btn-secondary btn-block float-right' %></p>
+  </div>
+
+
+<% end %>

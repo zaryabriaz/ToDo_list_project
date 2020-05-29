@@ -1,0 +1,17 @@
+<div class="text-center" style="background-color: lightgray">
+<p>
+<h4>Task</h4>
+  <%= @todo.task %>
+</p>
+<p>
+<h4>Status</h4>
+  <%= @todo.status %>
+</p>
+<p>
+<h4>Due Date</h4>
+  <%= @todo.due_date %>
+</p>
+
+<Strong> Task Save Successfully!!</Strong><br>
+</div>
+<%= link_to 'Go to Main Page',to_dos_path ,class: 'btn btn-primary btn-block float-right'%>
